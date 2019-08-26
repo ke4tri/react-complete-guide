@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
+import ValidationComponent from "./ValidationComponent/ValidationComponent";
 
 class App extends Component {
   state = {
@@ -10,7 +11,8 @@ class App extends Component {
       { id: "88fief", name: "Stephanie", age: 26 }
     ],
     otherState: "some other value",
-    showPersons: false
+    showPersons: false,
+    textArea: ""
   };
 
   // switchNameHandler = newName => {
@@ -53,6 +55,20 @@ class App extends Component {
     this.setState({ persons: persons });
   };
 
+  textAreaChanger = event => {
+    // const stateTextCopy = [...this.state.textArea];
+    const inputText = event.target.value;
+    this.setState({ textArea: inputText }, function() {
+      console.log(this.state.textArea);
+    });
+  };
+
+  textLengthState = () => {
+    const textAreaCopy = [...this.state.textArea];
+    const textAreaLength = textAreaCopy.length;
+    return textAreaLength;
+  };
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -69,6 +85,7 @@ class App extends Component {
     };
 
     let persons = null;
+    let textArea = null;
 
     if (this.state.showPersons) {
       persons = (
@@ -112,6 +129,12 @@ class App extends Component {
         <button style={style} onClick={this.togglePersonsHandler}>
           Toggle Name
         </button>
+        <div>
+          <input type="text" onChange={event => this.textAreaChanger(event)} />
+
+          {/* <input placeholder="This will be your text" /> */}
+        </div>
+        <ValidationComponent stateLength={this.textLengthState()} />
         {persons}
         {/* THE BELOW BUTTON WORKS JUST LIKE THE ONE ABOVE */}
         {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
