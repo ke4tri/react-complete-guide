@@ -69,6 +69,15 @@ class App extends Component {
     return textAreaLength;
   };
 
+  textLengthShort = () => {
+    const stateCopyOfText = [...this.state.textArea];
+    if (stateCopyOfText.length >= 5) {
+      return <div>This is long enough</div>;
+    } else {
+      return <div>This is to short</div>;
+    }
+  };
+
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
@@ -134,7 +143,11 @@ class App extends Component {
 
           {/* <input placeholder="This will be your text" /> */}
         </div>
-        <ValidationComponent stateLength={this.textLengthState()} />
+        <ValidationComponent
+          stateLength={this.textLengthState()}
+          stateToShort={this.textLengthShort()}
+        />
+
         {persons}
         {/* THE BELOW BUTTON WORKS JUST LIKE THE ONE ABOVE */}
         {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
