@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 import "./App.css";
 import Person from "./Person/Person";
 import ValidationComponent from "./ValidationComponent/ValidationComponent";
@@ -151,36 +151,40 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(" ")}>This is really working!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
-          Toggle Name
-        </button>
-        <div>
-          <input type="text" onChange={event => this.textAreaChanger(event)} />
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(" ")}>This is really working!</p>
+          <button style={style} onClick={this.togglePersonsHandler}>
+            Toggle Name
+          </button>
+          <div>
+            <input
+              type="text"
+              onChange={event => this.textAreaChanger(event)}
+            />
 
-          {/* <input placeholder="This will be your text" /> */}
-        </div>
-        <ValidationComponent
-          stateLength={this.textLengthState()}
-          stateToShort={this.textLengthShort()}
-          inputLength={this.state.textArea.length}
-        />
+            {/* <input placeholder="This will be your text" /> */}
+          </div>
+          <ValidationComponent
+            stateLength={this.textLengthState()}
+            stateToShort={this.textLengthShort()}
+            inputLength={this.state.textArea.length}
+          />
 
-        {persons}
-        {/* THE BELOW BUTTON WORKS JUST LIKE THE ONE ABOVE */}
-        {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
+          {persons}
+          {/* THE BELOW BUTTON WORKS JUST LIKE THE ONE ABOVE */}
+          {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
           Switch Name
         </button> */}
-        {/* ANOTHER OPTION BELOW FOR THE BUTTON SWITCH AND IS PREFERED*/}
-        {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>
+          {/* ANOTHER OPTION BELOW FOR THE BUTTON SWITCH AND IS PREFERED*/}
+          {/* <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>
           Switch Name
         </button> */}
 
-        {/* BELOW IS A TURNARY USED TO RENDER IF SHOWPERSONS IS TRUE AND IS TOGGLED BYTHE 
+          {/* BELOW IS A TURNARY USED TO RENDER IF SHOWPERSONS IS TRUE AND IS TOGGLED BYTHE 
         BUTTON.  THIS CAN BE DONE INSTEAD OF THE IF STATEMENT OUTSIDE OF THE RETURN */}
-        {/* {
+          {/* {
           this.state.showPersons === true ? 
           <div>
             <Person
@@ -201,7 +205,8 @@ class App extends Component {
             />
           </div> : null
         } */}
-      </div>
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }

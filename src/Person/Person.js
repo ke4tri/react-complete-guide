@@ -1,11 +1,17 @@
 import React from "react";
+import Radium from "radium";
 import "./Person.css";
 
 //ES6 Functional Component
 const person = props => {
+  const style = {
+    "@media (min-width: 500px)": {
+      width: "450px"
+    }
+  };
   // TO MANAGE STATE IN FUNCTIONAL COMPONENTS YOU WILL HAVE TO USE HOOKS
   return (
-    <div className="Person">
+    <div className="Person" style={style}>
       <p onClick={props.click}>
         I'm {props.name} a Person and I am {props.age} years old!
       </p>
@@ -16,4 +22,4 @@ const person = props => {
   );
 };
 
-export default person;
+export default Radium(person);
