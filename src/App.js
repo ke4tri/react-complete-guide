@@ -73,20 +73,9 @@ class App extends Component {
 
   render() {
     // JS WAY OF STYLING WITH A CONST AND PASSING TO THE JSX
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1x solid blue",
-      padding: "8px",
-      cursor: "pointer"
-      // ":hover": {
-      //   backgroundColor: "lightgreen",
-      //   color: "black"
-      // }
-    };
 
     let persons = null;
+    let btnClass = "";
 
     if (this.state.showPersons) {
       persons = (
@@ -105,11 +94,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "red";
-      // style[":hover"] = {
-      //   backgroundColor: "salmon",
-      //   color: "black"
-      // };
+      btnClass = classes.Red;
     }
 
     // let classes = ['red', 'bold'].join(' ');
@@ -125,7 +110,7 @@ class App extends Component {
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(" ")}>This is really working!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Name
         </button>
         <div>
