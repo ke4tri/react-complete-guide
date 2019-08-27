@@ -1,4 +1,5 @@
 import React from "react";
+import Radium from "radium";
 import "./ValidationComponent.css";
 
 //ES6 Functional Component
@@ -7,10 +8,11 @@ const validation = props => {
   return (
     <div className="validation">
       <div>Validation Component</div>
-      <div>This is the legth : {props.stateLength}</div>
-      <div>This should be a message : {props.stateToShort}</div>
+      {props.inputLength > 5 ? <p>Text long enough</p> : <p>Test to short!</p>}
+      {/* <div>This is the legth : {props.stateLength}</div>
+      <div>This should be a message : {props.stateToShort}</div> */}
     </div>
   );
 };
 
-export default validation;
+export default Radium(validation);
